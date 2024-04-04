@@ -3,6 +3,6 @@
 const base = prompt ('Ingrese la base: ')
 const altura = prompt ('Ingrese la altura: ')
 
-const area = 0.5 * base * altura
+const area = 0.5 * parseInt(base) * parseInt(altura)
 
 console.log ('El área del triángulo es: ' + area)
