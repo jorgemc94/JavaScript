@@ -8,6 +8,6 @@ const minutes = time.getMinutes()
 
 
 if (hours <= 9 || minutes <= 9) 
-    console.log('Formato YYYY-MM-DD HH-mm \n' + `${year}-${month}-${date} 0${hours}:0${minutes}`)
+    console.log('Formato YYYY-MM-DD HH-mm \n' + year + '-' + month + '-' + date + ' ' + 0+hours + ":" + 0+minutes)
 else 
     console.log('Formato YYYY-MM-DD HH-mm \n' + `${year}-${month}-${date} ${hours}:${minutes}`)
