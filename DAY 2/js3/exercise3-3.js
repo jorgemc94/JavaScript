@@ -6,3 +6,4 @@ let textClean = text3.replace(/[^a-zA-Z0-9 ]/g, '') //-g
 console.log(textClean)
 
 
+
