@@ -20,6 +20,6 @@ if (nota <=49) {
     console.log('Tu notas es: ' + nota + ' B')
 } else if ( nota <=100) {
     console.log('Tu notas es: ' + nota + ' A')
-} else { (nota >100) 
+} else { 
     alert('Nota erronea')
 }

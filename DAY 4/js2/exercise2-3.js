@@ -13,3 +13,4 @@ if (day === "sabado" || day === "domingo"){
 else{
     alert("Invalido")
 }
+
