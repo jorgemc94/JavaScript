@@ -1,4 +1,4 @@
-//Agrupar por el tipo de tarjeta de creditto cuales existen dentro de la info
+//1-. Agrupar por el tipo de tarjeta de creditto cuales existen dentro de la info
 const card = [
     {
         "type": "MasterCard",
