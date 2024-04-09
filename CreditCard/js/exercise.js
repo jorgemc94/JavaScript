@@ -1,4 +1,3 @@
-//1-. Agrupar por el tipo de tarjeta de creditto cuales existen dentro de la info
 const card = [
     {
         "type": "MasterCard",
@@ -601,3 +600,19 @@ const card = [
         "owner": "Marques Sauer"
     }
 ]
+
+
+//1-. Agrupar por el tipo de tarjeta de creditto cuales existen dentro de la info
+
+let cards = []
+card.forEach((cardInfo) => {
+    let typeCard = cardInfo["type"]
+    if (!cards.includes(typeCard)){
+    cards.push(typeCard)
+    }
+});
+
+console.log(cards);
+
+//2-. Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros
+

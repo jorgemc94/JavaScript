@@ -1,1 +1,0 @@
-//Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros

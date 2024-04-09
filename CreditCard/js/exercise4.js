@@ -1,1 +1,0 @@
-//Indicar en HTML el nombre de las personas que tienen la tarjeta de credito caducada (inferior a este mes)
