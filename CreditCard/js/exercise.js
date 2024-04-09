@@ -640,11 +640,3 @@ nowMonth = nowMonth.slice(-2) // para coger siempre los dos ultimos dígitos
 
 const nameExpiredCard = []
 
-objectCard.forEach((expiredInfo) => { 
-    let expiredCard = expiredInfo["expiration"] 
-    if (nowMonth > expiredCard.substring(0, 2) && finalYear > expiredCard.split(-2)){ 
-        nameExpiredCard.push(expiredCard)
-    }
-});
-
-console.log(nameExpiredCard)
