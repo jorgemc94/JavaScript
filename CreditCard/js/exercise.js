@@ -615,10 +615,6 @@ console.log(cards);
 
 //2-. Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros
 
-for (index = 0; index < cards.length; index ++) {
-
-}
-
 
 //3-. Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.
 
