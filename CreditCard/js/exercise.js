@@ -1,4 +1,4 @@
-const card = [
+const objectCard = [
     {
         "type": "MasterCard",
         "number": "4532750907210784",
@@ -601,14 +601,13 @@ const card = [
     }
 ]
 
-
 //1-. Agrupar por el tipo de tarjeta de creditto cuales existen dentro de la info
 
-let cards = []
-card.forEach((cardInfo) => {
-    let typeCard = cardInfo["type"]
-    if (!cards.includes(typeCard)){
-    cards.push(typeCard)
+let cards = [] //array vacio
+objectCard.forEach((cardInfo) => { 
+    let typeCard = cardInfo["type"] //variable typeCard = a la información "type" del objectCard
+    if (!cards.includes(typeCard)){ //el array cards no incluye la variable typeCard
+    cards.push(typeCard) // llenamos el array cards con los datos de la variable typeCard
     }
 });
 
@@ -616,3 +615,40 @@ console.log(cards);
 
 //2-. Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros
 
+for (index = 0; index < cards.length; index ++) {
+
+}
+
+
+//3-. Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.
+
+let date = new Date()
+let nowYear = date.getFullYear().toString(); // getFullYear() retorna un número, para poder usar slice() necesitamos convertirlo a un string utilizando toString()
+let finalYear = nowYear.slice(-2); // cogemos las dos ultimas fechas del año
+let cont = 0
+
+objectCard.forEach((yearInfo) => { 
+    let yearCard = yearInfo["expiration"] //variable yearCard = a la información "expiration" del objectCard
+    if (finalYear === yearCard.slice(-2)){ //finalYear(24) es igual a los dos ultimos digitios de yearCard
+    cont = cont + 1 // si es que si el contador suma 1
+    }
+});
+
+console.log(`En el año ${finalYear} la tarjeta de credito le expira a ${cont} personas`);
+
+
+//4-. Indicar en HTML el nombre de las personas que tienen la tarjeta de credito caducada (inferior a este mes)
+
+let nowMonth = "0" + (date.getMonth()+1).toString() //añadir 0 a los numeros de los meses
+nowMonth = nowMonth.slice(-2) // para coger siempre los dos ultimos dígitos
+
+const nameExpiredCard = []
+
+objectCard.forEach((expiredInfo) => { 
+    let expiredCard = expiredInfo["expiration"] 
+    if (nowMonth > expiredCard.substring(0, 2) && finalYear > expiredCard.split(-2)){ 
+        nameExpiredCard.push(expiredCard)
+    }
+});
+
+console.log(nameExpiredCard)
