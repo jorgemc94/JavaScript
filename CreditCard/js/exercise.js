@@ -602,7 +602,7 @@ const objectCard = [
 ]
 
 //1-. Agrupar por el tipo de tarjeta de creditto cuales existen dentro de la info
-
+/*
 let cards = [] //array vacio
 objectCard.forEach((cardInfo) => { 
     let typeCard = cardInfo["type"] //variable typeCard = a la información "type" del objectCard
@@ -612,6 +612,25 @@ objectCard.forEach((cardInfo) => {
 });
 
 console.log(cards);
+
+*/
+let cardTypes = [];
+
+cards.forEach((cardSingular) => {
+    if (!cardTypes.includes(cardSingular.type))
+        cardTypes.push(cardSingular.type);
+})
+
+
+let cardsGrouped = {}
+
+cardTypes.forEach((type) => {
+
+	cardsGrouped[type] = cards.filter((card) => card.type === type)
+})
+console.log(cardsGrouped)
+const value = prompt()
+console.log(cardsGrouped[value])
 
 //2-. Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros
 
@@ -637,6 +656,4 @@ console.log(`En el año ${finalYear} la tarjeta de credito le expira a ${cont} p
 
 let nowMonth = "0" + (date.getMonth()+1).toString() //añadir 0 a los numeros de los meses
 nowMonth = nowMonth.slice(-2) // para coger siempre los dos ultimos dígitos
-
-const nameExpiredCard = []
 
