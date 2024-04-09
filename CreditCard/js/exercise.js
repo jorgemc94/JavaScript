@@ -1,4 +1,4 @@
-const objectCard = [
+const cards = [
     {
         "type": "MasterCard",
         "number": "4532750907210784",
@@ -612,9 +612,33 @@ objectCard.forEach((cardInfo) => {
 });
 
 console.log(cards);
-
 */
-let cardTypes = [];
+
+let cardTypes1 = [];
+
+cards.forEach((cardSingular1) => {
+    if (!cardTypes1.includes(cardSingular1.type))
+        cardTypes1.push(cardSingular1.type);
+})
+
+
+let cardsGrouped1 = {}
+
+cardTypes1.forEach((type) => {
+
+	cardsGrouped1[type] = cards.filter((card) => card.type === type)
+})
+console.log(cardsGrouped1)
+
+/*
+//entrada de datos con promt()
+const value = prompt()
+console.log(cardsGrouped1[value])
+*/
+
+//2-. Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros
+
+const cardTypes = [];
 
 cards.forEach((cardSingular) => {
     if (!cardTypes.includes(cardSingular.type))
@@ -629,20 +653,50 @@ cardTypes.forEach((type) => {
 	cardsGrouped[type] = cards.filter((card) => card.type === type)
 })
 console.log(cardsGrouped)
-const value = prompt()
-console.log(cardsGrouped[value])
+console.log(Object.keys(cardsGrouped))
 
-//2-. Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros
+const root = document.getElementById("root")
+const table = document.createElement("table")
+const tableHead = document.createElement("thead")
 
+cardTypes.forEach((type) => {
+	console.log(type)
+	const rowHead = document.createElement("th")
+	rowHead.innerText=type
+	tableHead.appendChild(rowHead)
+})
+table.appendChild(tableHead)
+
+
+const tBody = document.createElement("tbody")
+table.appendChild(tBody)
+
+const row = document.createElement("tr")
+cardTypes.forEach((type) => {
+	const tableData = document.createElement("td")
+	console.log(type)
+	cardsGrouped[type].forEach((person) =>{
+		console.log(person)
+		const nameParraf = document.createElement("p")
+		nameParraf.innerText = person.owner
+		tableData.append(nameParraf)
+	})
+	row.appendChild(tableData)
+
+})
+table.append(row)
+root.appendChild(table)
 
 //3-. Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.
+
+
 
 let date = new Date()
 let nowYear = date.getFullYear().toString(); // getFullYear() retorna un número, para poder usar slice() necesitamos convertirlo a un string utilizando toString()
 let finalYear = nowYear.slice(-2); // cogemos las dos ultimas fechas del año
 let cont = 0
 
-objectCard.forEach((yearInfo) => { 
+cards.forEach((yearInfo) => { 
     let yearCard = yearInfo["expiration"] //variable yearCard = a la información "expiration" del objectCard
     if (finalYear === yearCard.slice(-2)){ //finalYear(24) es igual a los dos ultimos digitios de yearCard
     cont = cont + 1 // si es que si el contador suma 1
