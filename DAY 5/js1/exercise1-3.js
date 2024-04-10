@@ -1,3 +1,3 @@
 //3-. Encuentra la longitud de tu array.
 
-console.log(arrayLength)
+console.log(arrayNom.length)

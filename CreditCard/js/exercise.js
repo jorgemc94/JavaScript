@@ -614,15 +614,15 @@ objectCard.forEach((cardInfo) => {
 console.log(cards);
 */
 
-let cardTypes1 = [];
+let cardTypes1 = []; //array vacio
 
 cards.forEach((cardSingular1) => {
-    if (!cardTypes1.includes(cardSingular1.type))
-        cardTypes1.push(cardSingular1.type);
+    if (!cardTypes1.includes(cardSingular1.type)) // si nuestro array no incluye el tipo 
+        cardTypes1.push(cardSingular1.type); // llenamos el array con los tipos de tarjetas diferentes
 })
 
 
-let cardsGrouped1 = {}
+let cardsGrouped1 = {} //objeto vacio
 
 cardTypes1.forEach((type) => {
 
@@ -689,8 +689,6 @@ root.appendChild(table)
 
 //3-. Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.
 
-
-
 let date = new Date()
 let nowYear = date.getFullYear().toString(); // getFullYear() retorna un número, para poder usar slice() necesitamos convertirlo a un string utilizando toString()
 let finalYear = nowYear.slice(-2); // cogemos las dos ultimas fechas del año
@@ -708,6 +706,5 @@ console.log(`En el año ${finalYear} la tarjeta de credito le expira a ${cont} p
 
 //4-. Indicar en HTML el nombre de las personas que tienen la tarjeta de credito caducada (inferior a este mes)
 
-let nowMonth = "0" + (date.getMonth()+1).toString() //añadir 0 a los numeros de los meses
+let nowMonth = "0" + (11).toString() //añadir 0 a los numeros de los meses
 nowMonth = nowMonth.slice(-2) // para coger siempre los dos ultimos dígitos
-
