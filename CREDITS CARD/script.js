@@ -601,3 +601,106 @@ const cards = [
     }
 ]
 
+// 1-. Agrupar por el tipo de tarjeta de creditto cuales existen dentro de la info
+
+// Root element
+const root = document.getElementById("root");
+
+// Card-types array
+let cardTypes = [];
+
+// Loop over JSON object to obtain types
+cards.forEach((card) => {
+    // If card not in array, push it
+    if (!cardTypes.includes(card.type))
+        cardTypes.push(card.type);
+})
+
+console.log(cardTypes);
+
+// 2-. Mostrar la información en HTML de forma que se muestre una tabla (<table>) por cada tipo de 
+
+// Table with types of cards
+const table = document.createElement("table");
+
+// Append table to root elmnt
+root.appendChild(table);
+
+// Populate table headers
+cardTypes.forEach((element) => {
+    let thead = document.createElement("th");
+    thead.innerText = element;
+    table.appendChild(thead);
+})
+
+// Array counting clients with each card type
+let counts = []
+counts.length = cardTypes.length;
+counts.fill(0);
+
+// Count amount of holders for each card type
+for (let card = 0; cards[card]; card++) {
+    for (let type = 0; cardTypes[type]; type++) {
+        if (cards[card].type === cardTypes[type]) {
+            counts[type]++;
+        }
+    }
+}
+
+// Maximum amount of any card type
+const maxHolders = Math.max(...counts);
+
+// Create rows and columns for max holders amount
+for (let rows = 0; rows < maxHolders; rows++) {
+    let tr = document.createElement("tr");
+    for (let columns = 0; cardTypes[columns]; columns++){
+        let td = document.createElement("td");
+        td.textContent = '-';
+        tr.appendChild(td);
+    }
+    table.appendChild(tr);
+}
+
+// Refresh counts array
+counts.fill(0);
+
+// Populate table columns
+for (let client = 0; cards[client]; client++) {
+    for (let type = 0; cardTypes[type]; type++) {
+        if (cards[client].type === cardTypes[type]) {
+            table.rows[counts[type]].cells[type].textContent = cards[client].owner;
+            counts[type]++;
+        }
+    }
+}
+
+/* 3-. Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito. */
+
+// Amount of people with cards expiring this year
+let expireCounter = 0;
+for (let card = 0; cards[card]; card++) {
+    if (cards[card].expiration.includes("/24")) {
+        expireCounter++
+    }
+}
+// Display on website
+let expireThisYear = document.createElement("h2");
+const date = new Date();
+expireThisYear.textContent = `Amount of cards that expire in ${date.getFullYear()}: ${expireCounter}`;
+root.appendChild(expireThisYear);
+
+
+/* 4-. Indicar en HTML el nombre de las personas que tienen la tarjeta de credito caducada (inferior a este mes) */
+
+// Expired function
+
+
+
+//5-. Con los tipos de tarjetas que se han filtrado anteriormente, crear tantos botones como tipos de tarjeta de crédito que existen, de forma que al hacer click sobre cada uno de ellos, los datos se filtren para que solo se vean las tarjetas de ese tipo.
+
+
+
+//6-. Agrear un input de búsqueda, de forma que al introducir el mes de caducidad aparezcan las tarjetas de crédito que caducan para ese mes.
+
+
+//7-. Hacer lo mismo para el año. De forma que tienes que filtrar por año y mes. Ej: Tarjetas que caducan el mes 04 del año 25
