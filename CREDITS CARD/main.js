@@ -601,9 +601,11 @@ const cards = [
     }
 ]
 
-// 1-. Agrupar por el tipo de tarjeta de credito cuales existen dentro de la info
+//Creaccion de variables para pasar nuestro js a html
 
-//1.1-. Crear un array vacio
+const root = document.getElementById("root") //variable que va relacionada con nuestro div con id root
+
+// 1-. Agrupar por el tipo de tarjeta de credito cuales existen dentro de la info
 
 const filterCards = []; //array vacio
 cards.forEach(card => { //foreach para buscar dentro del array cards y el parametro card en singular
@@ -614,14 +616,39 @@ cards.forEach(card => { //foreach para buscar dentro del array cards y el parame
 
 console.log(filterCards); // Mostramos en consola el resultado de nuestro bucle guardado en el array filterCards
 
-// 2-. Mostrar la información en HTML de forma que se muestre una tabla (<table>) por cada tipo de 
+// 2-. Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros
+
+const table = document.createElement("table"); //creamos el elemento table de html
+const headTable = document.createElement("th"); //creamos el elemento th para el encabezado de la tabla
+headTable.innerText = `${filterCards}`; //añadimos el resultado de nuestro array a la variable headTable
+table.appendChild(headTable);
+
+filterCards.forEach(cardsInfo => { //foreach para buscar de nuestro array filterCards
 
 
+});
 
+root.appendChild(table);
 
 // 3-. Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.
 
+let count = 0; //variable contador
+let date = new Date().getFullYear().toString(); //convertimos el año actual 2024 a cadena de texto
+let yearNow = date.slice(2); //del año actual nos quedamos con los dos ultimos digitos
 
+for (let card = 0; cards[card]; card++) { //bucle for para recorrer las posiciones de nuestro array principal
+    if (cards[card].expiration.includes(yearNow)){ // si el actual esta incluido en el dato expiration
+        count ++; // sumamos uno a nuestro contador
+    };
+};
+
+const exercise3 = document.createElement("h3");
+exercise3.innerText = ("Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.");
+root.appendChild(exercise3);
+
+const exercise3Cont = document.createElement("p");
+exercise3Cont.innerText = (`El total de personas que le caducan la tarjeta de credito este año es: ${count}`);
+root.appendChild(exercise3Cont)
 
 // 4-. Indicar en HTML el nombre de las personas que tienen la tarjeta de credito caducada (inferior a este mes)
 
