@@ -11,11 +11,15 @@ for ( i = 0; i <= 100; i++) {
     }
     
 }
-let sumaParImp = document.createElement("p")
-sumaParImp.innerText = `La suma de los numeros pares es: ${sumaPar}`;
-root.appendChild(sumaParImp);
+
+//imprimir en la web
+let sumaParImp = document.createElement("p") //creamos una variable con la etiqueta html que usaremos
+sumaParImp.innerText = `La suma de los numeros pares es: ${sumaPar}`; // asignamos el texto a la variable creada
+root.appendChild(sumaParImp); //unimos nuestra variable al padre por su id
+
 let sumaImparImp = document.createElement("p")
 sumaImparImp.innerText = `La suma de los numeros impares es: ${sumaImpar}`;
 root.appendChild(sumaImparImp);
+
 console.log(`La suma de los numeros pares entre 0 y 100 es: ${sumaPar}`)
 console.log(`La suma de los numeros impares entre 0 y 100 es: ${sumaImpar}`)
