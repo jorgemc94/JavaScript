@@ -601,9 +601,18 @@ const cards = [
     }
 ]
 
-// 1-. Agrupar por el tipo de tarjeta de creditto cuales existen dentro de la info
+// 1-. Agrupar por el tipo de tarjeta de credito cuales existen dentro de la info
 
+//1.1-. Crear un array vacio
 
+const filterCards = []; //array vacio
+cards.forEach(card => { //foreach para buscar dentro del array cards y el parametro card en singular
+    if(!filterCards.includes(card.type)){ // si el type de nuestra card no esta incluido en filterCards
+        filterCards.push(card.type); //añadimos mediante push los datos que no están en nuestro array
+    }
+});
+
+console.log(filterCards); // Mostramos en consola el resultado de nuestro bucle guardado en el array filterCards
 
 // 2-. Mostrar la información en HTML de forma que se muestre una tabla (<table>) por cada tipo de 
 
