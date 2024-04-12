@@ -616,34 +616,44 @@ cards.forEach(card => { //foreach para buscar dentro del array cards y el parame
 
 console.log(filterCards); // Mostramos en consola el resultado de nuestro bucle guardado en el array filterCards
 
+const exercise1 = document.createElement("h4")
+exercise1.innerText = (`1-. Agrupar por el tipo de tarjeta de credito cuales existen dentro de la info`)
+root.appendChild(exercise1)
+
+const exercise1Cont = document.createElement("p")
+exercise1Cont.innerText = filterCards
+root.appendChild(exercise1Cont)
+
 // 2-. Mostrar la información en HTML de forma que se muestre una tabla () por cada tipo de tarjeta con sus miembros
 
-const table = document.createElement("table"); //creamos el elemento table de html
-const headTable = document.createElement("th"); //creamos el elemento th para el encabezado de la tabla
-headTable.innerText = `${filterCards}`; //añadimos el resultado de nuestro array a la variable headTable
-table.appendChild(headTable);
+const table = document.createElement("table") //creamos la tabla en html
+const head = document.createElement("thead") //cabecera de la tabla html
 
-filterCards.forEach(cardsInfo => { //foreach para buscar de nuestro array filterCards
+filterCards.forEach((type) => {
+ 	console.log(type)
+ 	const tableHead = document.createElement("th")
+ 	tableHead.innerText=type
+ 	head.appendChild(tableHead)
+ })
 
-
-});
-
-root.appendChild(table);
+root.appendChild(table)
+table.appendChild(head)
 
 // 3-. Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.
 
 let count = 0; //variable contador
-let date = new Date().getFullYear().toString(); //convertimos el año actual 2024 a cadena de texto
-let yearNow = date.slice(2); //del año actual nos quedamos con los dos ultimos digitos
+let dateYear = new Date().getFullYear().toString(); //convertimos el año actual 2024 a cadena de texto
+let yearNow = dateYear.slice(2); //del año actual nos quedamos con los dos ultimos digitos
+Number(yearNow); //convertimos nuestro yearNow a número
 
-for (let card = 0; cards[card]; card++) { //bucle for para recorrer las posiciones de nuestro array principal
-    if (cards[card].expiration.includes(yearNow)){ // si el actual esta incluido en el dato expiration
-        count ++; // sumamos uno a nuestro contador
-    };
-};
+cards.forEach(yearExpired => { //foreach para buscar dentro del array cards y el parametro yearExpired
+    if(Number(yearExpired.expiration.split("/")[1] === yearNow)){ // si año actual es igual a año de expiración
+        count ++ // aumentamos el valor de 1 a nuestra variable count
+    }
+})
 
-const exercise3 = document.createElement("h3");
-exercise3.innerText = ("Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.");
+const exercise3 = document.createElement("h4");
+exercise3.innerText = ("3-. Indicar en HTML Cuantas personas tienen la fecha de expiración en este año para la tarjeta de credito.");
 root.appendChild(exercise3);
 
 const exercise3Cont = document.createElement("p");
@@ -652,8 +662,21 @@ root.appendChild(exercise3Cont)
 
 // 4-. Indicar en HTML el nombre de las personas que tienen la tarjeta de credito caducada (inferior a este mes)
 
+let exercise4 = document.createElement("h4")
+exercise4.innerText = "4-. Indicar en HTML el nombre de las personas que tienen la tarjeta de credito caducada (inferior a este mes)"
+root.appendChild(exercise4)
 
+let dateMonth = '0' + (new Date().getMonth()+1); // variable que añade un 0 a la fecha actual
+let monthNow = Number(dateMonth.slice(-2)); // variable que coge las dos ultimos dígitos de nuestra variable dateMonth
 
+cards.forEach(expired => { //foreach para buscar dentro del array cards y el parametro expired
+    //comprobamos si mes y año es igual o menor al mes y año actual
+    if(Number(expired.expiration.split("/")[0]) <= monthNow && Number(expired.expiration.split("/")[1]) <= yearNow){
+        let cardExpired = document.createElement("p") //creamos un párrafo en html asignando la variable cardExpired
+        cardExpired.innerText = expired.owner // a nuestra variable cardExpired le damos el valor de la persona
+        root.appendChild(cardExpired) // apendamos nuestra variable al div root
+    }
+});
 /*5-. Con los tipos de tarjetas que se han filtrado anteriormente, crear tantos botones como tipos de tarjeta de crédito que existen, de forma que al hacer click sobre cada uno de ellos, los datos se filtren para que solo se vean las tarjetas de ese tipo.*/
 
 
