@@ -601,8 +601,6 @@ const cards = [
     }
 ]
 
-//Creaccion de variables para pasar nuestro js a html
-
     const root = document.getElementById('root'); //variable que va relacionada con nuestro div con id root
 
 // 1-. Agrupar por el tipo de tarjeta de credito cuales existen dentro de la info
@@ -638,19 +636,21 @@ const cards = [
         tableHead.innerText = type; // escribe en la cabecera de la tabla el valor type
         head.appendChild(tableHead); //unimos la cabecera de la tabla a la tabla creada 
     });
-    table.appendChild(head);
-    const rows = document.createElement('tr')
-    filterCards.forEach((type) => {
-    const cols = document.createElement('td')
+    table.appendChild(head); //apendamos la cabecera de la tabla a la tabla 
+    const rows = document.createElement('tr') //creamos las filas de nuestra tabla
+    filterCards.forEach((type) => { // forEach para nuestro array filterCards con el parámetro type
+    const cols = document.createElement('td') // creamos las columnas de nuestra tabla
 
-        filterPerson[type].forEach((person) => {
-            const ownerCard = document.createElement('p')
-            ownerCard.innerText = person.owner
-            cols.appendChild(ownerCard)
+        let filterPerson = cards.filter((card) => card.type === type) //creamos un array para filtrar las personas por su tipo de tarjeta
+        filterPerson.forEach((person) => { // recorremos nuestro array filterPerson 
+            const ownerCard = document.createElement('p') //creamos la etiqueta p html
+            ownerCard.innerText = person.owner // a nuestra variable le asignamos el valor de person.owner
+            cols.appendChild(ownerCard) //apendamos nuestra variable a la variable cols
         })
 
         rows.appendChild(cols)
     })
+
     table.appendChild(rows)
     root.appendChild(table)
 
