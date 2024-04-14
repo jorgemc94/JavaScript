@@ -648,6 +648,7 @@ const cards = [
     exercise6.innerText = '6-. Agrear un input de búsqueda, de forma que al introducir el mes y el año de caducidad aparezcan las tarjetas de crédito que caducan para ese mes.';
     inputs.appendChild(exercise6);
 
+    //funcion para mostrar los datos de las tarjetas
     const writeCardInHtmlDate = (cards) => {
         root2.innerHTML = ''; // para borrar el HTML
         cards.forEach((card) => { // forEach a nuestro array cards con el elemento card
@@ -659,11 +660,11 @@ const cards = [
 
     writeCardInHtmlDate(cards) //llamamos a la funcion creada
 
-    const search = document.createElement('input');
-    search.placeholder = 'Busqueda por fecha';
-    search.addEventListener('change', (event) => {
+    const search = document.createElement('input'); //creamos nuestro input en html
+    search.placeholder = 'Busqueda por fecha'; // añadimos contenido descriptivo a nuestro input
+    search.addEventListener('change', (event) => { // creamos la funcion para la busqueda (change)
     let userInput = event.target.value // creamos una variable y la igualamos al evento change al campo de texto el valor que va a tener
-    writeCardInHtmlDate(
+    writeCardInHtmlDate( //escribimos nuestra función filtrando por expiration y la fecha introducida 
         cards.filter((card) => card.expiration.split('/')[0] <= userInput.split('/')[0] && card.expiration.split('/')[1] <= userInput.split('/')[1]
         )
     )
