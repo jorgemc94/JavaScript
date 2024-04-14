@@ -601,8 +601,40 @@ const cards = [
     }
 ]
 
-/*5-. Con los tipos de tarjetas que se han filtrado anteriormente, crear tantos botones como tipos de tarjeta de crédito que existen, de forma que al hacer click sobre cada uno de ellos, los datos se filtren para que solo se vean las tarjetas de ese tipo.*/
+/* 5-. Con los tipos de tarjetas que se han filtrado anteriormente, crear tantos botones como tipos de tarjeta de crédito que existen, de forma que al hacer click sobre cada uno de ellos, los datos se filtren para que solo se vean las tarjetas de ese tipo.*/
 
+    const root = document.getElementById('root'); //variable para nuestro div con id root
+    const buttons = document.getElementById('buttons') // variable para nuestro div con id buttons
 
+    //Titulo del ejercicio
+    const exercise5 = document.createElement('h4');
+    exercise5.innerText = '5-. Crea un botón para cada uno de los tipos de tarjetas que existen, de forma que al hacer click sobre ellos, los datos se filtren solo para que se vean los de ese tipo de tarjeta';
+    buttons.appendChild(exercise5);
+    
+    const writeCardInHtml = (cards) => { //creamos la funcion writeCardInHtml dado que lo vamos a usar varias veces
+        root.innerHTML = ''; // para borrar el HTML
+        cards.forEach((card) => { // forEach a nuestro array cards con el elemento card
+            const content = document.createElement('p'); // creamos un parrafo
+            content.innerText = (`${card.owner} ${card.expiration}`); // insertamos el texto a nuestro parrafo
+            root.appendChild(content); // apendamos nuestra variable content a nuestro root
+        })
+    }
+    writeCardInHtml(cards); //llamada a la funcion
+
+    let filterCard = []; //creamos un array vacio para entrar los diferentes tipos de tarjetas 
+
+    cards.forEach((card) => { // forEach a nuestro array cards con el elemento card
+        if(!filterCard.includes(card.type)){ // si el tipo de carta no esta incluido en nuestro array filterCard
+            filterCard.push(card.type); // añadimos el tipo de carta a nuestra carta
+            const button = document.createElement('button'); // creamos el boton para cada tipo de carta
+            button.innerText = card.type; // ponemos el texto al boton
+            let type = card.type // creamos una variable para el typo de carta de nuestro array 
+            button.addEventListener('click',() => { //creamos el evento de escucha al hacer click
+                writeCardInHtml(cards.filter((card) => card.type === type)) // filtramos nuestro array cards para obtener aquellos en los que la carta sea el tipo de carta igual al tipo de carta
+            })
+            buttons.appendChild(button) //apendamos nuestros botones a nuestro div buttons
+        };
+    })
+    
 
 /*6-. Agrear un input de búsqueda, de forma que al introducir el mes y el año de caducidad aparezcan las tarjetas de crédito que caducan para ese mes.*/
