@@ -615,21 +615,23 @@ const cards = [
         root.innerHTML = ''; // para borrar el HTML
         cards.forEach((card) => { // forEach a nuestro array cards con el elemento card
             const content = document.createElement('p'); // creamos un parrafo
-            content.innerText = (`${card.owner} ${card.expiration}`); // insertamos el texto a nuestro parrafo
+            content.innerText = card.owner; // insertamos el texto a nuestro parrafo
             root.appendChild(content); // apendamos nuestra variable content a nuestro root
         })
     }
     writeCardInHtml(cards); //llamada a la funcion
 
-    let filterCard = []; //creamos un array vacio para entrar los diferentes tipos de tarjetas 
+    let typeCard = []; //creamos un array vacio para entrar los diferentes tipos de tarjetas
+    let cardFilter = []; // creamos un array vacio 
 
     cards.forEach((card) => { // forEach a nuestro array cards con el elemento card
-        if(!filterCard.includes(card.type)){ // si el tipo de carta no esta incluido en nuestro array filterCard
-            filterCard.push(card.type); // añadimos el tipo de carta a nuestra carta
+        if(!typeCard.includes(card.type)){ // si el tipo de carta no esta incluido en nuestro array typeCard
+            typeCard.push(card.type); // añadimos el tipo de carta a nuestra carta
             const button = document.createElement('button'); // creamos el boton para cada tipo de carta
             button.innerText = card.type; // ponemos el texto al boton
             let type = card.type // creamos una variable para el typo de carta de nuestro array 
             button.addEventListener('click',() => { //creamos el evento de escucha al hacer click
+                cardFilter = cards; // le damos valor a nuestro array vacio cardFilter
                 writeCardInHtml(cards.filter((card) => card.type === type)) // filtramos nuestro array cards para obtener aquellos en los que la carta sea el tipo de carta igual al tipo de carta
             })
             buttons.appendChild(button) //apendamos nuestros botones a nuestro div buttons
@@ -638,3 +640,33 @@ const cards = [
     
 
 /*6-. Agrear un input de búsqueda, de forma que al introducir el mes y el año de caducidad aparezcan las tarjetas de crédito que caducan para ese mes.*/
+
+    const inputs = document.getElementById('inputs'); // creamos la variable a nuestro div con id inputs
+    const root2 = document.getElementById('root2')
+
+    const exercise6 = document.createElement('h4');
+    exercise6.innerText = '6-. Agrear un input de búsqueda, de forma que al introducir el mes y el año de caducidad aparezcan las tarjetas de crédito que caducan para ese mes.';
+    inputs.appendChild(exercise6);
+
+    const writeCardInHtmlDate = (cards) => {
+        root2.innerHTML = ''; // para borrar el HTML
+        cards.forEach((card) => { // forEach a nuestro array cards con el elemento card
+            const content = document.createElement('p'); // creamos un parrafo
+            content.innerText = (`${card.owner} ${card.expiration}`); // insertamos el texto a nuestro parrafo
+            root2.appendChild(content); // apendamos nuestra variable content a nuestro root2
+        })
+    }
+
+    writeCardInHtmlDate(cards) //llamamos a la funcion creada
+
+    const search = document.createElement('input');
+    search.placeholder = 'Busqueda por fecha';
+    search.addEventListener('change', (event) => {
+    let userInput = event.target.value // creamos una variable y la igualamos al evento change al campo de texto el valor que va a tener
+    writeCardInHtmlDate(
+        cards.filter((card) => card.expiration.split('/')[0] <= userInput.split('/')[0] && card.expiration.split('/')[1] <= userInput.split('/')[1]
+        )
+    )
+});
+
+inputs.appendChild(search);
