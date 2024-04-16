@@ -631,16 +631,17 @@ const cards = [
             button.innerText = card.type; // ponemos el texto al boton
             let type = card.type // creamos una variable para el typo de carta de nuestro array 
             button.addEventListener('click',() => { //creamos el evento de escucha al hacer click
-                cardFilter = cards; // le damos valor a nuestro array vacio cardFilter
+                cardFilter = cards.filter((card) => card.type === type); // le damos valor a nuestro array vacio cardFilter
                 writeCardInHtml(cards.filter((card) => card.type === type)) // filtramos nuestro array cards para obtener aquellos en los que la carta sea el tipo de carta igual al tipo de carta
             })
             buttons.appendChild(button) //apendamos nuestros botones a nuestro div buttons
         };
     })
     
-
+    
 /*6-. Agrear un input de búsqueda, de forma que al introducir el mes y el año de caducidad aparezcan las tarjetas de crédito que caducan para ese mes.*/
 
+    
     const inputs = document.getElementById('inputs'); // creamos la variable a nuestro div con id inputs
     const root2 = document.getElementById('root2')
 
@@ -665,9 +666,11 @@ const cards = [
     search.addEventListener('change', (event) => { // creamos la funcion para la busqueda (change)
     let userInput = event.target.value // creamos una variable y la igualamos al evento change al campo de texto el valor que va a tener
     writeCardInHtmlDate( //escribimos nuestra función filtrando por expiration y la fecha introducida 
-        cards.filter((card) => card.expiration.split('/')[0] <= userInput.split('/')[0] && card.expiration.split('/')[1] <= userInput.split('/')[1]
+        cards.filter((card) => card.expiration.split('/')[0] <= userInput.split('/')[0] && card.expiration.split('/')[1] <= userInput.split('/')[1] //filramos los objetos de nuestro array cards por el mes y el año
         )
     )
 });
 
 inputs.appendChild(search);
+
+
