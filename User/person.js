@@ -6,10 +6,5 @@ class Person {
         this.firstname = firstname;
         this.lastname = lastname;
     }
-
-    get id () {
-        for (i = 0; i < personArray.length; i++) {
-            console.log(personArray[i]);
-        }
-    }
+    
 }
