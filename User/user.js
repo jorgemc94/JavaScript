@@ -7,5 +7,10 @@ title2.innerText = '2-. Crear las clases de persona y usuario, teniendo en cuent
 exercise2.appendChild(title2);
 
 class User extends Person {
-    
+    constructor(id, firstname, lastname, email, username, ip) {
+        super(id, firstname, lastname)
+        this.email = email;
+        this.username = username;
+        this.ip = ip;
+    }
 }

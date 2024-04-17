@@ -279,7 +279,17 @@ const userList = [
     title1.innerText = '1-. Consumir la API de usuarios https://fakerapi.it/api/v1/users?_quantity=20&_gender=male'
     exercise1.appendChild(title1)
 
+    //Array para guardar las personas
     let personArray = [];
+
+    //Funcion para escribir HTML
+    const writeTextInHtml = (personArray) =>{
+      personArray.forEach(person => {
+        const content = document.createElement('p');
+        content.innerText = `ID: ${person.id} Firstname: ${person.firstname} lastname: ${person.lastname}`
+        exercise1.appendChild(content)
+      });
+    }
     //Hacer peticion a una URL
   
     const request = fetch('https://fakerapi.it/api/v1/users?_quantity=20&_gender=male')
@@ -288,8 +298,11 @@ const userList = [
           response.json().then((jsonData) => {
             personArray = jsonData.data;
             console.log(personArray);
+            writeTextInHtml(personArray)
           })
           .catch((error) => alert('Error'));
         }
       })
       .catch((Error) => 'Error');
+
+      
