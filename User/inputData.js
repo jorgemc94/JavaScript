@@ -6,3 +6,7 @@ const exercise4 = document.getElementById('exercise4');
 const title4 = document.createElement('h4')
 title4.innerText = '4-. Tener un input de número que permita especificar un número de valores que obtener de la API'
 exercise4.appendChild(title4)
+
+const inputNumber = document.createElement('input');
+inputNumber.placeholder = 'Introduce un numero';
+exercise4.appendChild(inputNumber);
