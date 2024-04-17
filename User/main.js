@@ -282,7 +282,9 @@ const userList = [
 
     //Hacer peticion a una URL
     fetch('https://fakerapi.it/api/v1/users?_quantity=20&_gender=male')
+      //entonces
       .then((response) => {
+        //si la respues es ok
         if (response.ok) {
           response
             .json()
