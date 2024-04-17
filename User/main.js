@@ -273,10 +273,10 @@ const userList = [
 //1-. Consumir (fetch) la API de usuarios https://fakerapi.it/api/v1/users?_quantity=20&_gender=male
 
     const exercise1 = document.getElementById('exercise1');
-
+    let url = 'https://fakerapi.it/api/v1/users?_quantity=20';
     //Titulo del ejercicio
     const title1 = document.createElement('h4')
-    title1.innerText = '1-. Consumir la API de usuarios https://fakerapi.it/api/v1/users?_quantity=20&_gender=male'
+    title1.innerText = '1-. Consumir la API de usuarios https://fakerapi.it/api/v1/users?_quantity=20'
     exercise1.appendChild(title1)
 
     //Array para guardar las personas
@@ -292,7 +292,7 @@ const userList = [
     }
     //Hacer peticion a una URL
   
-    const request = fetch('https://fakerapi.it/api/v1/users?_quantity=20&_gender=male')
+    const request = fetch(url)
       .then((response) => {
         if (response.ok) {
           response.json().then((jsonData) => {
