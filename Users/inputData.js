@@ -13,12 +13,14 @@ const inputNumber = document.createElement('input');
 inputNumber.placeholder = 'Introduce un numero';
 inputNumber.addEventListener('change', (event) => {
 let userInput = event.target.value;
+if (userInput === '')
+    userInput = 20;
 if (!parseInt(userInput)) {
     alert('Introduce un número')
 } else {
 let urlNew = `https://fakerapi.it/api/v1/users?_quantity=${userInput}&_gender=male`
 console.log(urlNew)
-fetchData(urlNew) // llamamos a la funcion fetchData
+fetchData(urlNew, 'exercise4Content') // llamamos a la funcion fetchData con el div 'exercise4Content'
 }
 
 })

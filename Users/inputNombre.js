@@ -13,8 +13,8 @@ const createSearchInputName = (userList) => { //Creamos el userList y lo sacamos
 inputName.placeholder = 'Introduce un nombre'; // añadimos el placeholder
 inputName.addEventListener('change',(event) => { //añadimos el evento de escucha
     let value = event.target.value; // variable que guarda el valor del evento
-    // escribimos en HTML el resultado de filtar nuestro userList por nombre cuando incluye el introducido
-    writeTextInHtml(userList.filter(user => user.firstname.includes(value))) 
+    // escribimos en HTML el resultado de filtar nuestro userList por nombre cuando incluye el introducido y lo escribimos en nuestro exercise3Content
+    writeTextInHtml(userList.filter(user => user.firstname.includes(value)), 'exercise3Content') 
 
 })
 exercise3.appendChild(inputName); 

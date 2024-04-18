@@ -11,17 +11,19 @@
     let personArray = [];
 
     //Funcion para escribir HTML
-    const writeTextInHtml = (personArray) =>{
+    const writeTextInHtml = (personArray,divId) =>{ //añadimos dos parámateros
+      const div = document.getElementById(divId) // creamos una variable que la unimos a nuestro segundo parámetro
+      div.innerHTML= ''
       personArray.forEach(person => {
         const content = document.createElement('p');
         //Para quedar los datos guardados en la clase
         content.innerText = person.getInfo();
-        exercise2.appendChild(content)
+        div.appendChild(content)
       });
     }
     //Hacer peticion a una URL
   
-    const fetchData = (url) => { // creamos una funcion para hacer la peticion a la url
+    const fetchData = (url, divId) => { // creamos una funcion para hacer la peticion a la url y añadimos el segundo parámetro
       const request = fetch(url) //realizamos nuestra peticion
       .then((response) => { // mientras que haya respuesta
         if (response.ok) { //comprobamos que la respuesta sea ok
@@ -37,7 +39,7 @@
               userList.push(user) //añadimos los usuarios a nuestro array userList
             });
             console.log(userList) // mostramos usuarios en la consola
-            writeTextInHtml(userList) // escribimos el resultado en nuestro HTML
+            writeTextInHtml(userList,divId) // escribimos el resultado en nuestro HTML con el parámetro divId
             createSearchInputName(userList) 
           })
           .catch((error) => alert('Error informacion de la API'));
@@ -46,5 +48,5 @@
       .catch((Error) => 'Error al contactar con la API');
     }
       
-    fetchData(url) //Llamamos a la funcion con el parametro url
+    fetchData(url,'exercise2') //Llamamos a la funcion con el parametro url y el div al que se pinta
     
