@@ -6,5 +6,16 @@ class Person {
         this.firstname = firstname;
         this.lastname = lastname;
     }
+
+    getid () {
+        return this.id;
+    }
     
+    getfirstname () {
+        return this.firstname
+    }
+
+    getlastname () {
+        return this.lastname
+    }
 }

@@ -38,7 +38,7 @@
             });
             console.log(userList) // mostramos usuarios en la consola
             writeTextInHtml(userList) // escribimos el resultado en nuestro HTML
-            createSearchInputName(userList)
+            createSearchInputName(userList) 
           })
           .catch((error) => alert('Error informacion de la API'));
         }
