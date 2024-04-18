@@ -21,24 +21,23 @@
     }
     //Hacer peticion a una URL
   
-    const request = fetch(url)
-      .then((response) => {
-        if (response.ok) {
-          response.json().then((jsonData) => {
-            personArray = jsonData.data;
+    const request = fetch(url) //realizamos nuestra peticion
+      .then((response) => { // mientras que haya respuesta
+        if (response.ok) { //comprobamos que la respuesta sea ok
+          response.json().then((jsonData) => { // nos devuelve un json y mientras que sea json
+            personArray = jsonData.data; //añadimos los objetos a nuestro array
             console.log(personArray);
-            //creamos un array para añadir los usuarios y poder acceder a los metedos
-            let userList = [];
+            let userList = []; //creamos un array para añadir los usuarios y poder acceder a los metedos
             //creamos nuestro objetos cogiendo la información obtenida
-            personArray.forEach(person => {
-              //creamos objetos usuario
-              const user = new User(person.id, person.firstname, person.lastname, person.email, person.username, person.ip);
-              console.log(user)
-              //añadimos los usuarios a nuestro array userList
-              userList.push(user)
+            personArray.forEach(person => { // recorremos nuestro array personArray
+              //creamos los objetos de nuestros nuevos usuarios
+              const user = new User(person.id, person.firstname, person.lastname, person.email, person.username, person.ip); //agregamos nuestros nuevos usuarios a una variable
+              console.log(user) // mostramos por consola nuestros usuarios
+              userList.push(user) //añadimos los usuarios a nuestro array userList
             });
-            console.log(userList)
-            writeTextInHtml(userList)
+            console.log(userList) // mostramos usuarios en la consola
+            writeTextInHtml(userList) // escribimos el resultado en nuestro HTML
+            createSearchInputName(userList)
           })
           .catch((error) => alert('Error informacion de la API'));
         }
