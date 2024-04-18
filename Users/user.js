@@ -13,4 +13,20 @@ class User extends Person {
         this.username = username;
         this.ip = ip;
     }
+
+    getemail() {
+        return this.email;
+    }
+
+    getusername() {
+        return this.username;
+    }
+
+    getip() {
+        return this.ip;
+    }
+
+    getInfo () {
+        return `${this.id} ${this.firstname} ${this.lastname} ${this.email} ${this.username} ${this.ip}`;
+    }
 }
