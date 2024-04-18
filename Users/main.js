@@ -13,7 +13,7 @@
     //Funcion para escribir HTML
     const writeTextInHtml = (personArray,divId) =>{ //añadimos dos parámateros
       const div = document.getElementById(divId) // creamos una variable que la unimos a nuestro segundo parámetro
-      div.innerHTML= ''
+      div.innerHTML= '';
       personArray.forEach(person => {
         const content = document.createElement('p');
         //Para quedar los datos guardados en la clase
@@ -39,7 +39,7 @@
               userList.push(user) //añadimos los usuarios a nuestro array userList
             });
             console.log(userList) // mostramos usuarios en la consola
-            writeTextInHtml(userList,divId) // escribimos el resultado en nuestro HTML con el parámetro divId
+            writeTextInHtml(userList, divId) // escribimos el resultado en nuestro HTML con el parámetro divId
             createSearchInputName(userList) 
           })
           .catch((error) => alert('Error informacion de la API'));
@@ -48,5 +48,5 @@
       .catch((Error) => 'Error al contactar con la API');
     }
       
-    fetchData(url,'exercise2') //Llamamos a la funcion con el parametro url y el div al que se pinta
+    fetchData(url,'exercise2Content') //Llamamos a la funcion con el parametro url y el div al que se pinta
     
