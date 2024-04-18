@@ -16,10 +16,9 @@ let userInput = event.target.value;
 if (!parseInt(userInput)) {
     alert('Introduce un número')
 } else {
-let urlSplit = url.split('=');
-let urlReplace = urlSplit[1].replace('20',userInput)
-let urlNew = urlSplit[0] + '=' + urlReplace + '=' + urlSplit[2]
+let urlNew = `https://fakerapi.it/api/v1/users?_quantity=${userInput}&_gender=male`
 console.log(urlNew)
+fetchData(urlNew) // llamamos a la funcion fetchData
 }
 
 })

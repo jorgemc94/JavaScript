@@ -21,7 +21,8 @@
     }
     //Hacer peticion a una URL
   
-    const request = fetch(url) //realizamos nuestra peticion
+    const fetchData = (url) => { // creamos una funcion para hacer la peticion a la url
+      const request = fetch(url) //realizamos nuestra peticion
       .then((response) => { // mientras que haya respuesta
         if (response.ok) { //comprobamos que la respuesta sea ok
           response.json().then((jsonData) => { // nos devuelve un json y mientras que sea json
@@ -43,6 +44,7 @@
         }
       })
       .catch((Error) => 'Error al contactar con la API');
+    }
       
-      
+    fetchData(url) //Llamamos a la funcion con el parametro url
     
