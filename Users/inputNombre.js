@@ -8,8 +8,8 @@ title3.innerText = '3-. Crear un input que permita filtrar por nombre de la pers
 exercise3.appendChild(title3);
 
 //Creamos el input
-const createSearchInputName = (userList) => { //Creamos una funcion para con el array userList
 const inputName = document.createElement('input'); // creamos el input
+const createSearchInputName = (userList) => { //Creamos el userList y lo sacamos fuera para que no se repita
 inputName.placeholder = 'Introduce un nombre'; // añadimos el placeholder
 inputName.addEventListener('change',(event) => { //añadimos el evento de escucha
     let value = event.target.value; // variable que guarda el valor del evento
